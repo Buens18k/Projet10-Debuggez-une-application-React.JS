@@ -10,12 +10,13 @@ const Slider = () => {
 
   // Tri les données focus par ordre Décroissant
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
+    // Comparaison si B est plus recent chronologiquement que A ? true : false (avant : après dans le tableau byDateDesc)
     new Date(evtB.date) < new Date(evtA.date) ? -1 : 1
   );
 
   useEffect(() => {
     // Deplacement de la logique de transition automatique (fonction 'nextCard')
-    // création d'une variable timerOutId
+    // Stoke l'identifiant du délai d'éxécution
     const timeOutId = setTimeout(() => {
       // Verification de l'index par rapport à l'index précèdent (-1 pour éviter l'affichage d'une image blanche)
       setIndex((prevIndex) => (prevIndex < (byDateDesc?.length ?? 0) - 1 ? prevIndex + 1 : 0));
@@ -37,8 +38,10 @@ const Slider = () => {
   return (
     <div className="SlideCardList">
       {byDateDesc?.map((event, idx) => (
+        // Clé unique pour le titre
         <div key={event.title}>
           <div
+            // Clé unique pour l'id de l'événement
             key={event.id}
             className={`SlideCard SlideCard--${
               index === idx ? "display" : "hide"
