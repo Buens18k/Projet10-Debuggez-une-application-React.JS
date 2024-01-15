@@ -23,7 +23,7 @@ export const DataProvider = ({ children }) => {
   const [last, setLast] = useState(null);
   const getData = useCallback(async () => {
     try {
-      // Fonction appelée que si 'data' est nul
+      // Appel de la Fonction seulement si 'data' est 'null'
       if(!data) {
         // Charge les données en utilisant 'api.loadData'
         setData(await api.loadData());
