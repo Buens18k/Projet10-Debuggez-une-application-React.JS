@@ -123,6 +123,7 @@ const Page = () => {
           last && <Modal
             Content={
               <ModalEvent 
+                key={last?.event}
                 event={last}
               />
             }
